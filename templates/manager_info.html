@@ -1,0 +1,35 @@
+    {% extends 'base_old.html' %}
+    {% block content %}
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+{#    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">{{ detail.title }}</h3>#}
+
+      <h1> Менеджер: </h1>
+          <p>
+        Имя: {{ manager_info.name }}
+          </p>
+
+         <p>
+         Фамилия: {{ manager_info.surname }}
+          </p>
+
+        <p>
+            Телефон: {{ manager_info.phone }}
+          </p>
+
+        <p>
+        Email: {{ manager_info.email }}
+          </p>
+
+
+  </div>
+  <div class="w3-container w3-padding-32" id="about">
+
+  </div>
+
+
+
+ {% endblock %}

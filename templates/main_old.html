@@ -1,0 +1,43 @@
+    {% extends 'base_old.html' %}
+
+    {% block content %}
+<!-- Page content -->
+
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+     {% load static %}
+
+        <img class="w3-image" src="{% static 'img/banner.jpg' %}" alt="Architecture" width="1500" height="800">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+      <a href="/"> Все категории | </a>
+
+      {% for category in category %}
+          <a href="/{{ category.pk }}"> {{ category.name }} | </a>
+      {% endfor %}
+
+  </div>
+
+  <div class="w3-row-padding">
+
+
+{#    <p>{{ object.title }} | {{ object.info }} | {{ object.price }}</p>#}
+
+
+        {% for object in realty %}
+
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+          <a href="/detail/{{ object.pk }}"> {{ object.title}} </a>
+
+      </div>
+    </div>
+
+        {% endfor %}
+
+
+  </div>
+
+    {% endblock %}

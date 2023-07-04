@@ -1,0 +1,25 @@
+    {% extends 'base.html' %}
+    {% load static %}
+
+    {% block content %}
+      <!-- ======= Features Section ======= -->
+      <section id="features" class="features">
+        <div class="container">
+          <div class="row">
+                {% for object in realty %}
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="card" data-aos="fade-up">
+                <img src="{{ object.img.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <i class="bx bx-tachometer"></i>
+                  <h5 class="card-title"><a href="{% url 'object_info' object.pk %}">{{object.title}}</a></h5>
+                  <p class="card-text">{{ object.info }}</p>
+                </div>
+              </div>
+            </div>
+                {% endfor %}
+          </div>
+        </div>
+
+{% endblock %}
+

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+{# стили для формы поиска#}
+<style>
+  .form-inline {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .form-inline .form-group {
+    flex: 0 0 100%;
+    margin-bottom: 10px;
+  }
+
+  .form-inline .form-group .btn-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .form-inline .form-group .btn-group .btn {
+    margin-left: 5px;
+  }
+
+  @media (min-width: 768px) {
+    .form-inline .form-group {
+      flex: 0 0 auto;
+      margin-right: 10px;
+    }
+
+    .form-inline .form-group:last-child {
+      margin-right: 0;
+    }
+  }
+</style>
+
+
+
+
+
+
+      <!-- ======= Features Section ======= -->
+      <section id="features" class="features">
+        <div class="container">
+
+        {# ФОРМА ПОИСКА начало#}
+<form class="form-inline mt-2 mt-md-0" action="" method="get">
+  <div class="form-group">
+    <select name="category" class="form-control" onchange="this.form.submit()">
+      <option value="">Тип недвижимости</option>
+      {% for i in category %}
+        <option value="{{ i.pk }}" {% if request.GET.category|stringformat:"s" == i.pk|stringformat:"s" %}selected{% endif %}>{{ i }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <input name="zapros" class="form-control" type="text" placeholder="Search" aria-label="Search" value="{{ request.GET.zapros }}">
+  </div>
+  <div class="form-group">
+    <input name="min" class="form-control" type="text" placeholder="Min" aria-label="Search" value="{{ request.GET.min }}" pattern="[0-9]*" title="Please enter numbers only">
+  </div>
+  <div class="form-group">
+    <input name="max" class="form-control" type="text" placeholder="Max" aria-label="Search" value="{{ request.GET.max }}" pattern="[0-9]*" title="Please enter numbers only">
+  </div>
+  <div class="form-group">
+    <div class="btn-group">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline-secondary" type="button" onclick="resetForm(this.form)">Clear</button>
+    </div>
+  </div>
+</form>
+        {# ФОРМА ПОИСКА конец#}
+
+        <script>
+          function resetForm(form) {
+            form.category.value = '';
+            form.zapros.value = '';
+            form.min.value = '';
+            form.max.value = '';
+            form.submit();
+          }
+        </script>
+
+
+
+
+          <div class="row">
+
+                {% for object in Realty %}
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+              <div class="card" data-aos="fade-up">
+                <img src="{{ object.img.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <i class="bx bx-tachometer"></i>
+                  <h5 class="card-title"><a href="{% url 'object_info' object.pk %}">{{object.title}}</a></h5>
+                  <p class="card-text">{{ object.info }}</p>
+                  <p class="card-text"><b>{{ object.cat }}</b></p>
+                </div>
+              </div>
+            </div>
+                {% endfor %}
+          </div>
+
+        </div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="a{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}
