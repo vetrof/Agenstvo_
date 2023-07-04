@@ -55,6 +55,7 @@ def detailobjectview(request, pk):
     return render(request, 'detail.html', {'info': info, 'form': form})
 
 
+
 class ManagerDetailView(DetailView):
     template_name = 'manager_info.html'
     model = Manager

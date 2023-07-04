@@ -55,25 +55,39 @@
     </main><!-- End #main -->
 
 
+    <!-- Form Zayavka -->
+      <div class="container">
+          <form action="" method="post">
+                {% csrf_token %}
+             <div class="row">
 
+                 <!-- name field -->
+                  <div class="col-md-6 form-group">
+                      <input type="text" name="name" class="form-control"  placeholder="Your Name" required>
+                  </div>
 
-  <form action="" method="post" role="form" class="php-email-form mt-4" data-aos="fade-up" data-aos-delay="400">
-  {% csrf_token %}
-  {{ form.as_p }}
+                 <!-- email field -->
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <input type="email" class="form-control" name="email"  placeholder="Your Email" required>
+                  </div>
+             </div>
 
-{#    <input  name="manager_id" value="{{ info.person.id }}">#}
-    <input type="hidden" name="manager_id" value="{{ info.person.id }}">
+              <!-- question field -->
+             <div class="form-group mt-3">
+                <input type="question" class="form-control" name="question"  placeholder="Your question" required>
+             </div>
 
-  <div class="my-3">
-    <div class="loading">Loading</div>
-    <div class="error-message"></div>
-    <div class="sent-message">Your message has been sent. Thank you!</div>
-  </div>
-  <div class="text-center"><button type="submit">Send Message</button></div>
-</form>
+              <!-- Hidden field for manager ID-->
+             <input type="hidden" class="form-control" name="manager_id"  placeholder="manager_id" required value="{{ info.person.id }}">
+              <br>
 
+              <!-- Button -->
+              <div class="text-center"><button type="submit" class="btn btn-success" >Send Message</button></div>
 
-
-
-
+          </form>
+      </div>
+        <!-- END Form Zayavka --
+<br>
+<br>
+<br>
 {% endblock %}
