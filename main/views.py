@@ -52,7 +52,6 @@ def detailobjectview(request, pk):
 
     else:
         form = ZayavkaForm()
-
     return render(request, 'detail.html', {'info': info, 'form': form})
 
 
