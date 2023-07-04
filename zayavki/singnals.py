@@ -13,7 +13,7 @@ def send_email_to_manager(sender, instance, created, **kwargs):
     if created:
         manager_email = Manager.objects.get(id=instance.manager_id).email
         subject = 'New zayavka'
-        message = f"новая заявка от {instance.name} / тема письма: {instance.question} / email: {instance.email}"
+        message = f"новая заявка от {instance.name} / тема письма: {instance.question} / email отправителя: {instance.email}"
         from_email = 'vetrof@yandex.ru'
         recipient_list = [manager_email]
         send_mail(subject, message, from_email, recipient_list)
