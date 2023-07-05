@@ -6,12 +6,7 @@ from main.models import Realty, Category, Manager
 from zayavki.forms import ZayavkaForm
 
 
-# class AllObjects(ListView):
-#     model = Realty
-#     template_name = 'main.html'
-#     context_object_name = 'objects'
-
-
+# list objects on index page
 class ObjectsMain(ListView):
     model = Realty
     template_name = 'main.html'

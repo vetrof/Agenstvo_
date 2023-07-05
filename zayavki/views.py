@@ -9,4 +9,3 @@ class ZayavkaViews(CreateView):
     model = Zayavka
     fields = ('name', 'email', 'question')
     success_url = '/'
-
