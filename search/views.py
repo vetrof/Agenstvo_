@@ -4,6 +4,8 @@ from django.views.generic import ListView
 
 from main.models import Realty, Category
 
+from django.contrib.auth.decorators import login_required
+
 
 class SearchResult(ListView):
     template_name = 'search_result.html'
@@ -17,7 +19,11 @@ class SearchResult(ListView):
         category = self.request.GET.get('category')
 
         if query:
-            queryset = Realty.objects.filter(Q(info__iregex=query) | Q(title__iregex=query))
+            search_terms = query.split()
+            q_objects = Q()
+            for term in search_terms:
+                q_objects &= (Q(info__iregex=term) | Q(title__iregex=term))
+            queryset = Realty.objects.filter(q_objects)
 
         else:
             queryset = Realty.objects.all()
