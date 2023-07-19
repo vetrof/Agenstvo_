@@ -12,28 +12,10 @@ class ObjectsMain(ListView):
     template_name = 'main.html'
     context_object_name = 'realty'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        category = Category.objects.all()
-        context['category'] = category
-        return context
-
     def get_queryset(self):
-        query = self.request.GET.get('zapros')
-        min = self.request.GET.get('min')
-        max = self.request.GET.get('max')
-
-        if query:
-            queryset = Realty.objects.filter(Q(info__icontains=query) | Q(title__icontains=query))
-        else:
-            queryset = Realty.objects.all()
-
-        if min:
-            queryset = queryset.filter(price__gt=min)
-
-        if max:
-            queryset = queryset.filter(price__lte=max)
-        return queryset
+        queryset = super().get_queryset()
+        rnd_obj = Realty.objects.order_by('?')[:3]
+        return rnd_obj
 
 
 def detailobjectview(request, pk):
@@ -43,8 +25,7 @@ def detailobjectview(request, pk):
         form = ZayavkaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
-
+            return redirect('main:home')
     else:
         form = ZayavkaForm()
     return render(request, 'detail.html', {'info': info, 'form': form})

@@ -49,12 +49,14 @@
         {# ФОРМА ПОИСКА начало#}
 <form class="form-inline mt-2 mt-md-0" action="" method="get">
   <div class="form-group">
+
     <select name="category" class="form-control" onchange="this.form.submit()">
       <option value="">Тип недвижимости</option>
       {% for i in category %}
         <option value="{{ i.pk }}" {% if request.GET.category|stringformat:"s" == i.pk|stringformat:"s" %}selected{% endif %}>{{ i }}</option>
       {% endfor %}
     </select>
+
   </div>
   <div class="form-group">
     <input name="zapros" class="form-control" type="text" placeholder="Search" aria-label="Search" value="{{ request.GET.zapros }}">
@@ -86,25 +88,32 @@
 
 
 
+        <br>
+        <br>
+<style>
+  .card {
+    margin-bottom: 20px; /* Добавить зазор между карточками */
+  }
+</style>
 
-          <div class="row">
-
-                {% for object in Realty %}
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-              <div class="card" data-aos="fade-up">
-                <img src="{{ object.img.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <i class="bx bx-tachometer"></i>
-                  <h5 class="card-title"><a href="{% url 'object_info' object.pk %}">{{object.title}}</a></h5>
-                  <p class="card-text">{{ object.info }}</p>
-                  <p class="card-text"><b>{{ object.cat }}</b></p>
-                </div>
-              </div>
-            </div>
-                {% endfor %}
-          </div>
-
+<div class="row">
+  {% for object in Realty %}
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+      <div class="card" data-aos="fade-up">
+        <a href="{{ object.get_absolute_url }}"><img src="{{ object.img.url }}" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <i class="bx bx-tachometer"></i>
+          <h5 class="card-title"><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h5>
+          <p class="card-text">{{ object.info }}</p>
         </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+      {% include 'pagination.html' with page=Realty %}
 
 
   <!-- Vendor JS Files -->

@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'mail_sender',
     # 'celery',
     # 'django_celery_results',
+    # 'django_jinja',
+    'rest_framework',
+    'django_extensions'
 
 ]
 
@@ -74,6 +77,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'Agenstvo.wsgi.application'
@@ -140,3 +144,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'
 # CELERY_RESULT_BACKEND = 'django-db'
+
+REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+

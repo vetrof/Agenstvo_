@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from celery import shared_task
+# from celery import shared_task
 
 from zayavki.models import Zayavka
 from main.models import Realty, Manager

@@ -9,7 +9,7 @@ class GalleryInline(admin.TabularInline):
 
 
 class RealtyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'cat', 'person')
+    list_display = ('id', 'title', 'price', 'cat', 'person')
     search_fields = ('title', 'info')
     ordering = ('-id',)
     inlines = [GalleryInline, ]

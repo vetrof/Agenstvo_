@@ -1,25 +1,42 @@
-    {% extends 'base.html' %}
-    {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 
-    {% block content %}
-      <!-- ======= Features Section ======= -->
-      <section id="features" class="features">
-        <div class="container">
-          <div class="row">
-                {% for object in realty %}
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-              <div class="card" data-aos="fade-up">
-                <img src="{{ object.img.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <i class="bx bx-tachometer"></i>
-                  <h5 class="card-title"><a href="{% url 'object_info' object.pk %}">{{object.title}}</a></h5>
-                  <p class="card-text">{{ object.info }}</p>
-                </div>
-              </div>
+{% block content %}
+  <!-- ======= Features Section ======= -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        {% for object in realty %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="card" data-aos="fade-up">
+            <a href="{{ object.get_absolute_url }}"><img src="{{ object.img.url }}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <i class="bx bx-tachometer"></i>
+              <h5 class="card-title"><a href="{{ object.get_absolute_url }}">{{object.title}}</a></h5>
+              <p class="card-text">{{ object.info }}</p>
             </div>
-                {% endfor %}
           </div>
         </div>
+        {% endfor %}
+        <div class="col-lg-12 d-flex justify-content-center">
+          <a href="{% url 'search:search' %}" class="btn btn-custom mx-auto mt-5">Все объекты</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .btn-custom {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+    .btn-custom:hover,
+    .btn-custom:focus {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #000;
+    }
+  </style>
 
 {% endblock %}
-

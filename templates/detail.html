@@ -14,12 +14,15 @@
                 <div class="swiper-wrapper align-items-center">
 
 
-                    {% for i in info.images.all %}
+                  <div class="swiper-slide">
+                    <img src="{{ info.img.url }}" alt="">
+                  </div>
 
+
+                    {% for i in info.images.all %}
                   <div class="swiper-slide">
                     <img src="{{ i.image.url }}" alt="">
                   </div>
-
                     {% endfor %}
 
 
@@ -36,7 +39,7 @@
                   <li><strong>Тип </strong>: {{ info.cat }}</li>
                   <li><strong>Цена </strong>: {{ info.price }}</li>
                   <li><strong>Менеджер </strong>: {{ info.person }} ID: {{ info.person.id }}</li>
-                  <li><strong>Подать </strong> <a href="{% url 'zayavka' %}">заявку</a></li>
+                  <li><strong>Подать </strong> <a href="{% url 'zayavki:zayavka' %}">заявку</a></li>
                 </ul>
               </div>
               <div class="portfolio-description">

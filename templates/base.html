@@ -63,7 +63,7 @@
       <div class="container d-flex align-items-center justify-content-between">
 
         <div class="logo">
-          <h1 class="text-light"><a href="{% url 'home' %}"><span>Plato</span></a></h1>
+          <h1 class="text-light"><a href="{% url 'main:home' %}"><span>Plato</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -71,8 +71,8 @@
         <nav id="navbar" class="navbar">
           <ul>
 
-            <li><a class="nav-link scrollto {% if request.path == '/' %} active {% else %} {% endif %}" href="{% url 'home' %}">Главная</a></li>
-            <li><a class="nav-link scrollto {% if request.path == '/search/' %} active {% else %} {% endif %}" href="{% url 'search' %}">Поиск</a></li>
+            <li><a class="nav-link scrollto {% if request.path == '/' %} active {% else %} {% endif %}" href="{% url 'main:home' %}">Главная</a></li>
+            <li><a class="nav-link scrollto {% if request.path == '/search/' %} active {% else %} {% endif %}" href="{% url 'search:search' %}">Поиск</a></li>
 
 
 {#            <li><a class="nav-link scrollto" href="#services">Services</a></li>#}
@@ -97,7 +97,7 @@
 {#                <li><a href="#">Drop Down 4</a></li>#}
 {#              </ul>#}
 {#            </li>#}
-            <li><a class="nav-link scrollto {% if request.path == '/zayavka/' %} active {% else %} {% endif %} " href="{% url 'zayavka' %}">Подать заявку</a></li>
+            <li><a class="nav-link scrollto {% if request.path == '/zayavka/' %} active {% else %} {% endif %} " href="{% url 'zayavki:zayavka' %}">Подать заявку</a></li>
 {#            <li><a class="nav-link scrollto" href="{% url 'zayavka' %}">О компании</a></li>#}
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -113,7 +113,6 @@
         {% block content %}
 
         {% endblock %}
-
 
 
     <!-- ======= Footer ======= -->

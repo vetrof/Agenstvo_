@@ -1,0 +1,85 @@
+{#<style>#}
+{#  .pagination-container {#}
+{#    display: flex;#}
+{#    justify-content: center;#}
+{#    margin-top: 20px; /* Отступ сверху */#}
+{#    margin-bottom: 20px; /* Отступ снизу */#}
+{#  }#}
+{##}
+{#  .pagination {#}
+{#    list-style-type: none;#}
+{#    padding: 0;#}
+{#  }#}
+{##}
+{#  .pagination li {#}
+{#    display: inline;#}
+{#    margin-right: 10px; /* Настроить расстояние между цифрами страниц */#}
+{#  }#}
+{##}
+{#  .pagination .current {#}
+{#    font-weight: bold;#}
+{#  }#}
+{#</style>#}
+{##}
+{#<div class="pagination-container">#}
+{#  <ul class="pagination">#}
+{#    {% if page.has_previous %}#}
+{#      <li><a href="?{{ clean_query_string }}&page={{ page.previous_page_number }}">Previous</a></li>#}
+{#    {% endif %}#}
+{##}
+{#    <li class="current">#}
+{#      Page {{ page.number }} of {{ page.paginator.num_pages }}.#}
+{#    </li>#}
+{##}
+{#    {% if page.has_next %}#}
+{#      <li><a href="?{{ clean_query_string }}&page={{ page.next_page_number }}">Next</a></li>#}
+{#    {% endif %}#}
+{#  </ul>#}
+{#</div>#}
+
+{#-----------------#}
+
+<style>
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Отступ сверху */
+    margin-bottom: 20px; /* Отступ снизу */
+  }
+
+  .pagination {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .pagination li {
+    display: inline;
+    margin-right: 10px; /* Настроить расстояние между цифрами страниц */
+  }
+
+  .pagination .current {
+    font-weight: bold;
+  }
+</style>
+
+<div class="pagination-container">
+  <ul class="pagination">
+    {% if page.has_previous %}
+      <li><a href="?{{ clean_query_string }}&page={{ page.previous_page_number }}">Previous</a></li>
+    {% endif %}
+
+    {% for num in page.paginator.page_range %}
+      {% if num == page.number %}
+        <li class="current">{{ num }}</li>
+      {% elif num > page.number|add:-7 and num < page.number|add:7 %}
+        <li><a href="?{{ clean_query_string }}&page={{ num }}">{{ num }}</a></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if page.has_next %}
+      <li><a href="?{{ clean_query_string }}&page={{ page.next_page_number }}">Next</a></li>
+    {% endif %}
+  </ul>
+</div>
+
+
