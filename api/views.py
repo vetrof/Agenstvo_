@@ -28,10 +28,10 @@ class ZayavkaCreateView(viewsets.ModelViewSet):
 
 
 class SearchApi(viewsets.ModelViewSet):
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
     queryset = Realty.objects.all()
     serializer_class = RealtySerializer
-    http_method_names = ['get']
+    # http_method_names = ['get']
     def get_queryset(self):
         query = self.request.GET.get('zapros')
         min = self.request.GET.get('min')

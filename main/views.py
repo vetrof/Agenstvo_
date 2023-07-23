@@ -32,6 +32,7 @@ def detailobjectview(request, pk):
 
 
 
+
 class ManagerDetailView(DetailView):
     template_name = 'manager_info.html'
     model = Manager

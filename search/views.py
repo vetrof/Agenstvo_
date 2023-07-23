@@ -22,10 +22,12 @@ class SearchResult(ListView):
         category = self.request.GET.get('category')
 
         if query:
-            search_terms = query.split()
+
+            search_words = query.split()
             q_objects = Q()
-            for term in search_terms:
-                q_objects &= (Q(info__iregex=term) | Q(title__iregex=term))
+            for word in search_words:
+                q_objects &= (Q(info__iregex=word) | Q(title__iregex=word))
+
             queryset = Realty.objects.filter(q_objects)
 
         else:

@@ -2,13 +2,16 @@
 {% load static %}
 
 {% block content %}
+
+
+
   <!-- ======= Features Section ======= -->
   <section id="features" class="features">
     <div class="container">
       <div class="row d-flex justify-content-center">
         {% for object in realty %}
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="card" data-aos="fade-up">
+          <div class="card">
             <a href="{{ object.get_absolute_url }}"><img src="{{ object.img.url }}" class="card-img-top" alt="..."></a>
             <div class="card-body">
               <i class="bx bx-tachometer"></i>

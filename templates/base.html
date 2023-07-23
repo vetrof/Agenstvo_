@@ -36,26 +36,30 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+<style>
+.realty {
+    font-size: 14px;
+    color: #d97c11;
+}
+</style>
+
+
 </head>
 
 <body>
   <div class="wrap">
 
     <!-- ======= Hero Section ======= -->
-
     {% if request.path == '/' %}
     <section id="hero">
       <div class="hero-container" data-aos="fade-up">
-        <h1>Агентство недвижимости <span>Plato</span></h1>
-        <h2>We are team of talented designers making websites with Bootstrap</h2>
-{#        <a href="#about" class="btn-get-started scrollto">Get Started</a>#}
+        <h1>Plaza Realty</h1>
+        <h2>Агентство вашей недвижимости!</h2>
       </div>
     </section><!-- End Hero -->
     {% else %}
-
     {% endif %}
-
-
 
 
     <!-- ======= Header ======= -->
@@ -63,7 +67,9 @@
       <div class="container d-flex align-items-center justify-content-between">
 
         <div class="logo">
-          <h1 class="text-light"><a href="{% url 'main:home' %}"><span>Plato</span></a></h1>
+          <h1 class="text-light"><a href="{% url 'main:home' %}">
+              <span>PLAZA <span class="realty">realty</span></span>
+          </a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -73,6 +79,7 @@
 
             <li><a class="nav-link scrollto {% if request.path == '/' %} active {% else %} {% endif %}" href="{% url 'main:home' %}">Главная</a></li>
             <li><a class="nav-link scrollto {% if request.path == '/search/' %} active {% else %} {% endif %}" href="{% url 'search:search' %}">Поиск</a></li>
+            <li><a class="nav-link scrollto {% if request.path == '/search/' %} active {% else %} {% endif %}" href="{% url 'search:search' %}">О нас</a></li>
 
 
 {#            <li><a class="nav-link scrollto" href="#services">Services</a></li>#}
@@ -98,6 +105,7 @@
 {#              </ul>#}
 {#            </li>#}
             <li><a class="nav-link scrollto {% if request.path == '/zayavka/' %} active {% else %} {% endif %} " href="{% url 'zayavki:zayavka' %}">Подать заявку</a></li>
+            <li><a class="nav-link scrollto {% if request.path == '/zayavka/' %} active {% else %} {% endif %} " href="{% url 'zayavki:zayavka' %}">Контакты</a></li>
 {#            <li><a class="nav-link scrollto" href="{% url 'zayavka' %}">О компании</a></li>#}
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>

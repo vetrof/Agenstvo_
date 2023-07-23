@@ -15,6 +15,12 @@ class ManagerSerializer(serializers.ModelSerializer):
         fields = ['name', 'phone', 'email', 'img']
 
 
+class AllCategories(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['name']
+
+
 class RealtySerializer(serializers.ModelSerializer):
     images = GallerySerializer(many=True, read_only=True)
     person = ManagerSerializer(read_only=True)
@@ -30,7 +36,4 @@ class ZayavkaSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'email', 'question', 'manager_id']
 
 
-class AllCategories(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ['name']
+
