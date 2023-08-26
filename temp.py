@@ -1,3 +1,1 @@
-import datetime
-
-print(datetime.date.today())
+# /home/vetrof/django

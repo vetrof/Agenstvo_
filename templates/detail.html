@@ -9,6 +9,9 @@
 
 
 
+
+
+
 <!-- ======= Portfolio Details Section ======= -->
       <section id="portfolio-details" class="portfolio-details">
         <div class="container">
@@ -19,15 +22,20 @@
               <div class="portfolio-details-slider swiper">
                 <div class="swiper-wrapper align-items-center">
 
+                {% load thumbnail %}
 
                   <div class="swiper-slide">
-                    <img src="{{ info.img.url }}" alt="">
+                      <a href="{{ info.img.url }}" target="_blank">
+                        <img src="{% thumbnail info.img 940x0 %}" alt="">
+                      </a>
                   </div>
 
 
                     {% for i in info.images.all %}
                   <div class="swiper-slide">
-                    <img src="{{ i.image.url }}" alt="">
+                      <a href="{{ i.image.url }}" target="_blank">
+                        <img src="{% thumbnail i.image 940x0 %}" alt="">
+                      </a>
                   </div>
                     {% endfor %}
 
